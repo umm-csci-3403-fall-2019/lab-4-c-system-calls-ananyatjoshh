@@ -5,19 +5,18 @@
 #include "file_disemvowel.h"
 #include <stdio.h>
 
-
+#define BUF_SIZE 1024
 
 bool is_vowel(char c) {
   char *result = c;
   int a = strlen(c);
-  bool notvowel;
 
   for (int i = 0; i < a; i++){
     if (result[i] == 'a' || result[i] == 'e' || result[i] == 'i' || result[i] == 'o' || result[i] == 'u' || result[i] == 'A' || result[i] == 'E' || result[i] == 'I' || result[i] == 'O' || result[i] == 'U') {
-      notvowel = true;
+      return true;
      }
     else {
-      notvowel = false;
+      return false;
     
   }
 }
@@ -33,7 +32,8 @@ bool is_vowel(char c) {
  result = str1;
 
  for (int i = 0; i < a; i++){
-      if (result[i] == 'a' || result[i] == 'e' || result[i] == 'i' || result[i] == 'o' || result[i] == 'u' || result[i] == 'A' || result[i] == 'E' || result[i] == 'I' || result[i] == 'O' || result[i] == 'U') {
+   if (is_vowel(in_buf[i] == false ) {
+       out_buf[len] = in_buf[i];
            len++;
      }
  }
@@ -41,26 +41,6 @@ bool is_vowel(char c) {
  return len;
 }
 
-char *disemvowel(char *str) {
- char *result;
- char *newString;
- int len;
- int j;
-
- len = strlen(str);
- result = str;
-
- newString = (char*) calloc(len-isval(result)+1, sizeof(char)); 
-
-
- for (int i = 0; i < len; i++){
-      if (result[i] == 'a' || result[i] == 'e' || result[i] == 'i' || result[i] == 'o' || result[i] == 'u' || result[i] == 'A' || result[i] == 'E' || result[i] == 'I' || result[i] == 'O' || result[i] == 'U') {
-//	     result[i] = "";
-     } else {
-	     newString[j] = result[i];
-	     j++;
-     }
- }
-  newString[len-isval(result)+1] = '\0';
-  return newString;
+ char *disemvowel(FILE* inputFile, FILE* outputFile) {
+   
 }
