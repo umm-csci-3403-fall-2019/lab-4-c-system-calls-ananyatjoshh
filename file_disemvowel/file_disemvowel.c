@@ -42,6 +42,8 @@ bool is_vowel(char c) {
 		 length = copy_non_vowels(strlen(in_buf), in_buf, out_buf);
 		 fwrite(out_buf, 1, length, outputFile);
 		 }
+ free(out_buf);
+ free(in_buf);
 }
 
  int main(int argc, char *argv[]) {
