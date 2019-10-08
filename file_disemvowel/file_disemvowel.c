@@ -34,16 +34,16 @@ bool is_vowel(char c) {
 }
 
  void disemvowel(FILE* inputFile, FILE* outputFile) {
- char* out_buf;
- char* in_buf;
+ char* out_buf = (char*)calloc(BUF_SIZE, sizeof(char*));
+ char* in_buf = (char*)calloc(BUF_SIZE, sizeof(char*));
  int length = 0;
- 
- while(){
- 
- }
 
-
+ while(fgets(in_buf, BUF_SIZE, inputFile) != NULL) {
+		 length = copy_non_vowels(strlen(in_buf), in_buf, out_buf);
+		 fwrite(out_buf, 1, length, outputFile);
+		 }
 }
+
  int main(int argc, char *argv[]) {
    FILE *inputFile;
    FILE *outputFile;
@@ -52,14 +52,15 @@ bool is_vowel(char c) {
      inputFile = stdin;
      outputFile = stdout;
    } else if (argc == 2){
-	   inputfile = fopen(argv[1], "r");
+	   inputFile = fopen(argv[1], "r");
 	   outputFile = stdout;
-   } else if (arc == 3){
-	 inputfile = fopen(argv[1], "r");
-	 outputfile = fopen(argv[2], "w");
+   } else if (argc == 3){
+	 inputFile = fopen(argv[1], "r");
+	 outputFile = fopen(argv[2], "w");
    }
 
    disemvowel(inputFile, outputFile);
-   
+   fclose(inputFile);
+   fclose(outputFile);
 
  }
