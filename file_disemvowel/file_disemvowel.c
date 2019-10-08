@@ -8,11 +8,7 @@
 #define BUF_SIZE 1024
 
 bool is_vowel(char c) {
-  char *result = c;
-  int a = strlen(c);
-
-  for (int i = 0; i < a; i++){
-    if (result[i] == 'a' || result[i] == 'e' || result[i] == 'i' || result[i] == 'o' || result[i] == 'u' || result[i] == 'A' || result[i] == 'E' || result[i] == 'I' || result[i] == 'O' || result[i] == 'U') {
+    if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
       return true;
      }
     else {
@@ -24,15 +20,11 @@ bool is_vowel(char c) {
 
  int copy_non_vowels( int num_chars, char* in_buf, char* out_buf) {
  int len;
- char *result;
- int a;
-
- a = strlen(str1);
+ 
  len = 0;
- result = str1;
 
- for (int i = 0; i < a; i++){
-   if (is_vowel(in_buf[i]) == false ){
+ for (int i = 0; i < num_chars; i++){
+   if (is_vowel(in_buf[i]) == false ) {
        out_buf[len] = in_buf[i];
            len++;
      }
@@ -41,6 +33,18 @@ bool is_vowel(char c) {
  return len;
 }
 
- char *disemvowel(FILE* inputFile, FILE* outputFile) {
-   
+ void disemvowel(FILE* inputFile, FILE* outputFile) {
+
 }
+ int main(int argc, char *argv[]) {
+   FILE *inputFile;
+   FILE *outputFile;
+
+   if (argc == 1) {
+     inputFile = stdin;
+     outputFile = stdout;
+   }
+   disemvowel(inputFile, outputFile);
+   
+
+ }
