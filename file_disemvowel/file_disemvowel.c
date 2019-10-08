@@ -32,7 +32,7 @@ bool is_vowel(char c) {
  result = str1;
 
  for (int i = 0; i < a; i++){
-   if (is_vowel(in_buf[i] == false ) {
+   if (is_vowel(in_buf[i]) == false ){
        out_buf[len] = in_buf[i];
            len++;
      }
