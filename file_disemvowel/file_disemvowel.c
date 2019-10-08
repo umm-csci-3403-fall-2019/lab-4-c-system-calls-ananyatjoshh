@@ -32,8 +32,8 @@ bool is_vowel(char c) {
  return len;
 }
 
- char disemvowel(FILE* inputFile, FILE* outputFile) {
-   return true;  
+ void disemvowel(FILE* inputFile, FILE* outputFile) {
+
 }
  int main(int argc, char *argv[]) {
    FILE *inputFile;
@@ -41,7 +41,7 @@ bool is_vowel(char c) {
 
    if (argc == 1) {
      inputFile = stdin;
-     inputFile = stdout;
+     outputFile = stdout;
    }
    disemvowel(inputFile, outputFile);
    
