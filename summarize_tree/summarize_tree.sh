@@ -2,9 +2,8 @@
 
 path=$1
 
-num_dirs=$(find $path -type d | wc -l)
-echo "There are "$num_dirs "directories."
+num_dirs=$(find $path -type d | wc -l | xargs)
+num_regular=$(find $path -type f | wc -l | xargs)
 
-num_regular=$(find $path -type f | wc -l)
-echo "There are "$num_regular "files."
-
+echo "There were "$num_dirs "directories."
+echo "There were "$num_regular " regular files."
