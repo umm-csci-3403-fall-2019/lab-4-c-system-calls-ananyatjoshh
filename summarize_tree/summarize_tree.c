@@ -10,11 +10,17 @@ static int num_dirs, num_regular;
 
 bool is_dir(const char* path) {
   struct stat st;
-  if(stat(path, &st) == 0 || S_ISDIR(st.st_mode))
-    return true;
-  else
+  if(stat(path, &st) == 0){
+    if(S_ISDIR(st.st_mode)){
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+  else {
     return false;
-
+  }
 }
 
 /* 
@@ -24,23 +30,29 @@ bool is_dir(const char* path) {
 void process_path(const char*);
 
 void process_directory(const char* path) {
-  /*
-   * Update the number of directories seen, use opendir() to open the
-   * directory, and then use readdir() to loop through the entries
-   * and process them. You have to be careful not to process the
-   * "." and ".." directory entries, or you'll end up spinning in
-   * (infinite) loops. Also make sure you closedir() when you're done.
-   *
-   * You'll also want to use chdir() to move into this new directory,
-   * with a matching call to chdir() to move back out of it when you're
-   * done.
-   */
+  DIR * first;
+  first = opendir(path);
+  struct dirent* fileOrDir;
+  fileOrDir = readdir(first);
+  chdir(path);
+
+  while(fileOrDir != NULL){
+    if (strcmp(fileOrDir->d_name, ".") != 0 && strcmp(fileOrDir->d_name, "..") != 0) {
+      process_path(fileOrDir->d_name);
+  }
+    fileOrDir = readdir(first);
+    
+}
+  num_dirs++;
+  chdir("..");
+  closedir(first);
 }
 
 void process_file(const char* path) {
   /*
    * Update the number of regular files.
    */
+  num_regular++;
 }
 
 void process_path(const char* path) {
